@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.8.4
+
+- Fixed Windows support (by @ymandrikov).
+- Fixed yarn support (by @ymandrikov).
+
 ## 0.8.3
 
 - Updated XSS protection library.
