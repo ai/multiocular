@@ -81,6 +81,14 @@ export function formatVersion(version: DependencyVersion): string {
   }
 }
 
+export function formatVersionParts(
+  version: DependencyVersion
+): null | RegExpMatchArray {
+  return formatVersion(version).match(
+    /^([vV]?)(\d+)(?:\.(\d+))?(?:\.(\d+))?((?:-[\dA-Za-z.-]+)?(?:\+[\dA-Za-z.-]+)?)$/
+  )
+}
+
 export function hasChangelog(changelog: LoadingValue<ChangeLogHtml>): boolean {
   if (changelog.isLoading) {
     return true

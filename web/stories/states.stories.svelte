@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   import { defineMeta } from '@storybook/addon-svelte-csf'
 
-  import type { Change } from '../../common/stores.ts'
+  import { type Change, UpdateType } from '../../common/stores.ts'
   import type { Debrand } from '../../common/types.ts'
   import Main from '../main/main.svelte'
   import Scene from './scene.svelte'
@@ -12,32 +12,41 @@
   })
 
   const CHANGES = [
-    { after: '5.1.5', before: '5.1.4', name: 'nanoid' },
+    {
+      after: '5.1.5',
+      before: '5.1.4',
+      name: 'nanoid',
+      update: UpdateType.PATCH
+    },
     {
       after: '9.0.0',
       before: '8.0.0',
       direct: true,
       name: 'nanoevents',
       size: 10,
-      status: 'reviewed'
+      status: 'reviewed',
+      update: UpdateType.MAJOR
     },
     {
       after: '8.41.0',
       before: '8.40.0',
       name: '@typescript-eslint/project-service',
-      size: 100
+      size: 100,
+      update: UpdateType.MINOR
     },
     {
       after: '8.41.0',
       before: '8.40.0',
       name: 'typescript-eslint',
-      size: 10
+      size: 10,
+      update: UpdateType.MINOR
     },
     {
       after: '8.0.1',
       before: '8.0.0',
       name: 'postcss',
-      size: 50
+      size: 50,
+      update: UpdateType.PATCH
     }
   ] satisfies Partial<Debrand<Change>>[]
 

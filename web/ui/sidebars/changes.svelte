@@ -1,9 +1,9 @@
 <script lang="ts">
   import { $sortedChanges as sortedChangesStore } from '../../../common/stores.ts'
   import type { ChangeId } from '../../../common/types.ts'
-  import { formatVersion } from '../../stores/change.ts'
   import { getChangeUrl } from '../../stores/router.ts'
   import Sidebar from '../sidebar.svelte'
+  import Version from '../version.svelte'
 
   let { current }: { current: ChangeId } = $props()
   let firstIndirect = $derived($sortedChangesStore.findIndex(i => !i.direct))
@@ -28,9 +28,21 @@
           >
             <div class="name">{change.name}</div>
             <div class="versions">
-              {change.before ? formatVersion(change.before) : 'none'}
+              {#if change.before}
+                <Version
+                  highlight
+                  update={change.update}
+                  version={change.before}
+                />
+              {:else}
+                none
+              {/if}
               →
-              {formatVersion(change.after)}
+              <Version
+                highlight={Boolean(change.before)}
+                update={change.update}
+                version={change.after}
+              />
             </div>
           </a>
         </li>
