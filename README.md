@@ -58,7 +58,7 @@ Start web UI to review changes:
 npx multiocular
 ```
 
-If you have GitHub API limit, define `GITHUB_TOKEN` environment variable with [personal token](https://github.com/settings/personal-access-tokens/new) with access to public repositories.
+If you have GitHub API limit, define `MULTIOCULAR_GITHUB_TOKEN` or `GITHUB_TOKEN` environment variable with [personal token](https://github.com/settings/personal-access-tokens/new) with access to public repositories. `MULTIOCULAR_GITHUB_TOKEN` takes priority when both variables are defined.
 
 ## Motivation
 
