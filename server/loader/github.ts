@@ -31,8 +31,9 @@ export async function githubApi<Response>(
 ): Promise<null | Response> {
   let name = isRepositoryUrl(repo) ? parseRepoFromUrl(repo) : repo
   let headers: HeadersInit = {}
-  if (process.env.GITHUB_TOKEN) {
-    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`
+  let token = process.env.MULTIOCULAR_GITHUB_TOKEN || process.env.GITHUB_TOKEN
+  if (token) {
+    headers.Authorization = `Bearer ${token}`
   }
   let response = await fetch(`https://api.github.com/repos/${name}${path}`, {
     headers
