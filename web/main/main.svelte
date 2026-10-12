@@ -20,6 +20,6 @@
   <EmptyPage />
 {:else if $pageStore.page === 'change'}
   <ChangePage id={$pageStore.id} />
-{:else if $pageStore.page === 'finish'}
+{:else}
   <FinishPage />
 {/if}

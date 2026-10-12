@@ -3,7 +3,7 @@
 
   import 'diff2html/bundles/css/diff2html.min.css'
 
-  import type { ColorSchemeType } from 'diff2html/lib-esm/types.ts'
+  import { ColorSchemeType } from 'diff2html/lib/types.js'
   import { Diff2HtmlUI } from 'diff2html/lib/ui/js/diff2html-ui-slim.js'
 
   import type { FileDiffs } from '../../common/stores.ts'
@@ -15,7 +15,7 @@
 <section
   {@attach section => {
     let diff = new Diff2HtmlUI(section, content, {
-      colorScheme: ($darkStore ? 'dark' : 'light') as ColorSchemeType,
+      colorScheme: $darkStore ? ColorSchemeType.DARK : ColorSchemeType.LIGHT,
       drawFileList: false,
       highlight: true,
       highlightLanguages: new Map([
