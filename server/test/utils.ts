@@ -27,6 +27,7 @@ if (!process.env.GITHUB_TOKEN) {
 const TEST_ENV = {
   ...process.env,
   FORCE_COLOR: undefined,
+  GIT_CONFIG_GLOBAL: '/dev/null',
   GIT_TERMINAL_PROMPT: '0',
   NO_COLOR: '1',
   npm_config_cache_min: '86400',

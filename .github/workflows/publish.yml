@@ -14,7 +14,7 @@ jobs:
       contents: read
     steps:
       - name: Harden the runner
-        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        uses: step-security/harden-runner@dc2769abcc0fcfbadfc1df54081c1608579ef6b2 # v2.22.2
         with:
           egress-policy: block
           allowed-endpoints: >
@@ -27,7 +27,7 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Install Node.js & pnpm
-        uses: pnpm/setup@5d160c5bc68a09337ad0d5654e237e03253b5879 # v1.0.0
+        uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
         with:
           version: 12
           runtime: node@26
@@ -36,7 +36,7 @@ jobs:
       - name: Run build
         run: pnpm build
       - name: Upload build artifacts
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: build-artifacts
           path: dist/
@@ -52,7 +52,7 @@ jobs:
       id-token: write
     steps:
       - name: Harden the runner
-        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        uses: step-security/harden-runner@dc2769abcc0fcfbadfc1df54081c1608579ef6b2 # v2.22.2
         with:
           egress-policy: block
           allowed-endpoints: >
@@ -69,7 +69,7 @@ jobs:
           name: build-artifacts
           path: dist/
       - name: Install npm
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 26
           registry-url: 'https://registry.npmjs.org'
@@ -83,7 +83,7 @@ jobs:
       contents: write
     steps:
       - name: Harden the runner
-        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        uses: step-security/harden-runner@dc2769abcc0fcfbadfc1df54081c1608579ef6b2 # v2.22.2
         with:
           egress-policy: block
           allowed-endpoints: >
