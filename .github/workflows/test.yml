@@ -30,6 +30,7 @@ jobs:
             api.github.com:443
             github.com:443
             nodejs.org:443
+            unofficial-builds.nodejs.org:443
             registry.yarnpkg.com:443
             release-assets.githubusercontent.com:443
             repo.yarnpkg.com:443
@@ -67,6 +68,7 @@ jobs:
             api.github.com:443
             github.com:443
             nodejs.org:443
+            unofficial-builds.nodejs.org:443
             registry.yarnpkg.com:443
             release-assets.githubusercontent.com:443
             repo.yarnpkg.com:443
