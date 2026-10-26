@@ -1,6 +1,6 @@
 {
   "name": "multiocular",
-  "version": "0.8.4",
+  "version": "0.9.0",
   "description": "Review dependencies changes to prevent supply chain attack",
   "keywords": [
     "dependencies",

@@ -2,6 +2,13 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.9.0
+
+- Added `MULTIOCULAR_GITHUB_TOKEN` environment variable (by @lKolabrodl).
+- Added highlighting of changed version segments (by @oiahoon).
+- Fixed multi-document `pnpm-lock.yaml` support (by @azat-io).
+- Fixed empty GitHub Releases on API glitches.
+
 ## 0.8.4
 
 - Fixed Windows support (by @ymandrikov).
