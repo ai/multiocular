@@ -1,5 +1,5 @@
 import { basename } from 'node:path'
-import { parse } from 'yaml'
+import { parseAllDocuments } from 'yaml'
 
 import { type Dependency, dependencyType } from '../../../common/types.ts'
 import type { VersionsLoader } from './common.ts'
@@ -32,23 +32,26 @@ export const pnpm = {
     let directDeps = getDirectDependencies(packageJsonFiles)
 
     for (let file of lockFiles) {
-      let lock = parse(file.content)
-      if (isLockFile9(lock)) {
-        for (let pkg in lock.packages) {
-          let { name, version } = splitPackage(pkg)
-          dependencies.push(
-            dependencyType({
-              direct: directDeps.has(name),
-              from: 'pnpm',
-              name,
-              source: file.path,
-              type: 'npm',
-              version
-            })
-          )
+      for (let doc of parseAllDocuments(file.content)) {
+        if (doc.errors[0]) throw doc.errors[0]
+        let lock = doc.toJS()
+        if (isLockFile9(lock)) {
+          for (let pkg in lock.packages) {
+            let { name, version } = splitPackage(pkg)
+            dependencies.push(
+              dependencyType({
+                direct: directDeps.has(name),
+                from: 'pnpm',
+                name,
+                source: file.path,
+                type: 'npm',
+                version
+              })
+            )
+          }
+        } else {
+          throw new Error('Unknown pnpm lock file')
         }
-      } else {
-        throw new Error('Unknown pnpm lock file')
       }
     }
 

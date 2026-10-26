@@ -89,3 +89,36 @@ test('shows nested dependency updates in pnpm', async () => {
     }
   ])
 })
+
+test('supports pnpm lock file with config dependencies', async () => {
+  await run('pnpm add --config nanoevents@9.1.0')
+  await run('pnpm add nanoid@5.1.4')
+  await run('git add .')
+  await run('git commit -m "Add dependencies"')
+  await run('pnpm add nanoid@5.1.5')
+
+  await cliJsonMatch([
+    {
+      after: '5.1.5',
+      before: '5.1.4',
+      name: 'nanoid'
+    }
+  ])
+})
+
+test('shows config dependency changes with pnpm', async () => {
+  await run('pnpm add --config nanoid@5.1.4')
+  await run('pnpm add nanoevents@9.1.0')
+  await run('git add .')
+  await run('git commit -m "Add dependencies"')
+  await run('pnpm add --config nanoid@5.1.5')
+
+  await cliJsonMatch([
+    {
+      after: '5.1.5',
+      before: '5.1.4',
+      from: 'pnpm',
+      name: 'nanoid'
+    }
+  ])
+})
